@@ -48,7 +48,7 @@ import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.KeyEvent;
 
-import lineageos.providers.LineageSettings;
+import android.provider.Settings;
 
 import com.android.internal.os.DeviceKeyHandler;
 
@@ -368,8 +368,8 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         }
 
         if (mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_SILENT) {
-            final boolean enabled = LineageSettings.System.getInt(mContext.getContentResolver(),
-                    LineageSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
+            final boolean enabled = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
             if (enabled) {
                 mVibrator.vibrate(50);
             }
